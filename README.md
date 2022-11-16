@@ -1,4 +1,4 @@
-# example-percy-python-appium
+# example-percy-appium-python
 Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/docs/python-appium-testing-tutorial) demonstrating Percy's Python Appium integration.
 
 ## Python Appium Tutorial
@@ -18,12 +18,12 @@ npm](https://nodejs.org/en/download/) and
 Clone the example application and install dependencies:
 
 ```bash
-$ git clone https://github.com/percy/example-percy-python-appium.git
-$ cd example-percy-python-appium
+$ git clone https://github.com/percy/example-percy-appium-python.git
+$ cd example-percy-appium-python
 $ make install
 ```
 
-Example Android and iOS apps are provided in [`resources`](https://github.com/percy/example-percy-python-appium/blob/master/resources) folder. You can follow [`upload your app`](https://www.browserstack.com/docs/app-automate/appium/getting-started/python#2-upload-your-app) if using App Automate.
+Example Android and iOS apps are provided in [`resources/`](https://github.com/percy/example-percy-appium-python/blob/master/resources) folder. You can follow [`upload your app`](https://www.browserstack.com/docs/app-automate/appium/getting-started/python#2-upload-your-app) if using App Automate.
 
 ### Step 2
 
@@ -74,7 +74,9 @@ yet. You'll see that Percy shows you that these screenshots come from your `tuto
 
 ### Step 5
 
-Use your text editor to edit `android.py` & `ios.py` and introduce some visual changes.
+Use your text editor to edit `tests/android.py` & `tests/ios.py` to
+- Update `USER_NAME`, `ACCESS_KEY` and `<APP URL>` with Browserstack User name, Access key and App URL
+- introduce some visual changes.
 
 android.py: You can add an extra scroll before taking screenshots like:
 
