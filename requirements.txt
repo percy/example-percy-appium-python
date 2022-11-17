@@ -1,0 +1,3 @@
+Appium-Python-Client
+percy-appium-app
+requests==2.*
