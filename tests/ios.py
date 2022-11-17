@@ -11,10 +11,8 @@ ACCESS_KEY = "App Automate Access key"
 
 
 def run_session(capability):
-    driver = webdriver.Remote("https://" + USER_NAME + ":" + ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub",
+    driver = webdriver.Remote("https://hub-cloud.browserstack.com/wd/hub",
                               capability)
-    time.sleep(2)
-    percy_screenshot(driver, 'screenshot 1')
     text_button = WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Text Button"))
     )
@@ -23,22 +21,30 @@ def run_session(capability):
         EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Text Input"))
     )
     text_input.send_keys("hello@browserstack.com" + "\n")
-    time.sleep(2)
-    percy_screenshot(driver, 'screenshot 2')
+    time.sleep(1)
+    driver.hide_keyboard()
+    percy_screenshot(driver, 'screenshot 1')
     driver.quit()
 
 
 if __name__ == '__main__':
     ios_capability = {
-        "build": "ios-builds",
         "deviceName": "iPhone 14",
         "os_version": "16",
         "app":  '<APP URL>',
         "percy:options": {
             "enabled": True
         },
+        'bstack:options' : {
+            "projectName" : "My Project",
+            "buildName" : "test percy_screnshot",
+            "sessionName" : "BStack first_test",
+
+            # Set your access credentials
+            "userName" : USER_NAME,
+            "accessKey" : ACCESS_KEY
+        },
         "platformName": "ios",
-        "sessionName": "v0.0.1"
     }
 
     capabilities_list = [ios_capability]

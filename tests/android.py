@@ -1,3 +1,4 @@
+import time
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +10,7 @@ ACCESS_KEY = "App Automate Access key"
 
 
 def run_session(capability):
-    driver = webdriver.Remote(f'https://{USER_NAME}:{ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub', capability)
+    driver = webdriver.Remote('https://hub-cloud.browserstack.com/wd/hub', capability)
     percy_screenshot(driver, 'screenshot 1')
 
     search_element = WebDriverWait(driver, 30).until(
@@ -21,23 +22,32 @@ def run_session(capability):
             (AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")
         )
     )
-    search_input.send_keys("BrowserStack")
+    search_input.send_keys("BrowserStac")
+    time.sleep(2)
+    driver.hide_keyboard()
     percy_screenshot(driver, 'screenshot 2')
 
     driver.quit()
 
 
 if __name__ == '__main__':
-    galaxy_s8_capability = {
-        "build": "android-builds",
+    pixel_4 = {
         "deviceName": "Google Pixel 4",
         "app": '<APP URL>',
         "percy:options": {
             "enabled": True
         },
+        'bstack:options' : {
+            "projectName" : "My Project",
+            "buildName" : "test percy_screnshot",
+            "sessionName" : "BStack first_test",
+
+            # Set your access credentials
+            "userName" : USER_NAME,
+            "accessKey" : ACCESS_KEY
+        },
         "platformName": "android",
-        "sessionName": "first-session"
     }
 
-    capabilities_list = [galaxy_s8_capability]
+    capabilities_list = [pixel_4]
     print(list(map(run_session, capabilities_list)))

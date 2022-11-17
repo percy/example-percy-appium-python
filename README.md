@@ -5,11 +5,11 @@ Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/doc
 
 The tutorial assumes you're already familiar with Python and
 [Appium](https://appium.io/) and focuses on using it with Percy. You'll still
-be able to follow along if you're not familiar with Python Appium, but we won't
-spend time introducing Python Appium concepts.
+be able to follow along if you're not familiar with Python, Appium, but we won't
+spend time introducing Python, Appium concepts.
 
 
-The tutorial also assumes you have [Node 12+ with
+The tutorial also assumes you have [Node 14+ with
 npm](https://nodejs.org/en/download/) and
 [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed.
 
@@ -77,14 +77,9 @@ yet. You'll see that Percy shows you that these screenshots come from your `tuto
 Use your text editor to edit `tests/android.py` & `tests/ios.py` to
 - Update `USER_NAME`, `ACCESS_KEY` and `<APP URL>` with Browserstack User name, Access key and App URL
 - introduce some visual changes.
-
-android.py: You can add an extra scroll before taking screenshots like:
-
-``` shell
-driver.executeScript("mobile: scrollGesture", params);
-```
-
-ios.py: You can update the key being sent to the textInput element.
+ - `tests/android.py`: You can add an extra scroll before taking screenshots like:
+   - `driver.executeScript("mobile: scrollGesture", params);`
+ - `tests/ios.py`: You can update the key being sent to the textInput element.
 
 
 ### Step 6
@@ -92,7 +87,7 @@ ios.py: You can update the key being sent to the textInput element.
 Commit the change:
 
 ``` shell
-$ git commit -am "Emphasize 'Clear completed' button"
+$ git commit -am "<Some relevant message>"
 ```
 
 ### Step 7
@@ -118,11 +113,11 @@ Visit your project in Percy and you'll see a new build with the visual compariso
 runs. Click anywhere on the Build 2 row. You can see the original screenshots on the left, and the new
 screenshots on the right.
 
-Percy has highlighted what's changed visually in the app! Snapshots with the largest changes are
+Percy has highlighted what's changed visually in the app! Screenshots with the largest changes are
 shown first You can click on the highlight to reveal the underlying screenshot.
 
-If you scroll down, you'll see that no other test cases were impacted by our changes to the 'Clear
-completed' button. The unchanged screenshots appear grouped together at the bottom of the list.
+If you scroll down, you'll see that no other test cases were impacted by our changes to text. 
+The unchanged screenshots are shown under `Unchanged` filter and are hidden by default.
 
 ### Finished! 😀
 
