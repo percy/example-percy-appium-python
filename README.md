@@ -23,7 +23,25 @@ $ cd example-percy-appium-python
 $ make install
 ```
 
-Example Android and iOS apps are provided in [`resources/`](https://github.com/percy/example-percy-appium-python/blob/master/resources) folder. You can follow [`upload your app`](https://www.browserstack.com/docs/app-automate/appium/getting-started/python#2-upload-your-app) if using App Automate.
+This tutorial specifically uses Browserstack App Automate to run appium test, even though you should be able to follow the tutorial if you are using any other service to run appium tests or running it locally. For app percy to work we only need to initialize AppPercy with driver object.
+
+In case you are choosing to use Browserstack App Automate, please follow following steps:
+
+1. You will need a BrowserStack `username` and `access key`. To obtain your access credentials, [sign up](https://www.browserstack.com/users/sign_up?utm_campaign=Search-Brand-India&utm_source=google&utm_medium=cpc&utm_content=609922405128&utm_term=browserstack) for a free trial or [purchase a plan](https://www.browserstack.com/pricing).
+
+2. Please get your `username` and `access key` from [profile](https://www.browserstack.com/accounts/profile) page.
+
+Example Android and iOS apps are provided in [`resources/`](https://github.com/percy/example-percy-appium-js/blob/master/resources) folder.
+You can upload them using following curl command
+```bash
+$ curl -u "<username>:<access key>" \
+  -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+  -F "file=@resources/ios_resources/BStackSampleApp.ipa" # for iOS, for android use resources/android_resources/WikipediaSample.apk  
+# You will get output similar to following, keep track of this app url
+{"app_url":"bs://b3d22f77ac5c4064bc1892f1c470d3728a9b697f"}
+```
+
+You can also follow [`upload your app`](https://www.browserstack.com/docs/app-automate/appium/getting-started/java#2-upload-your-app) if using App Automate for latest instructions.
 
 ### Step 2
 
