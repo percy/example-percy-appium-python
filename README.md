@@ -17,6 +17,9 @@ npm](https://nodejs.org/en/download/) and
 
 Clone the example application and install dependencies:
 
+Minimum required `@percy/cli` version is `1.15.0` for this to work correctly. If you already have `@percy/cli` installed please
+update it to latest or minium required version with `npm update -g @percy/cli`.
+
 ```bash
 $ git clone https://github.com/percy/example-percy-appium-python.git
 $ cd example-percy-appium-python
