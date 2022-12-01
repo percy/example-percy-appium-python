@@ -33,6 +33,7 @@ if __name__ == '__main__':
         "os_version": "16",
         "app":  '<APP URL>',
         "percy:options": {
+            # enabled is default True. This can be used to disable visual testing for certain capabilities
             "enabled": True
         },
         'bstack:options' : {
