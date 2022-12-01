@@ -22,7 +22,7 @@ def run_session(capability):
             (AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")
         )
     )
-    search_input.send_keys("BrowserStac")
+    search_input.send_keys("BrowserStack")
     time.sleep(2)
     driver.hide_keyboard()
     percy_screenshot(driver, 'screenshot 2')
