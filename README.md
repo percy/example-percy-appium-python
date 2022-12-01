@@ -48,7 +48,7 @@ You can also follow [`upload your app`](https://www.browserstack.com/docs/app-au
 
 ### Step 2
 
-Sign in to Percy and create a new project. You can name the project "test-project" if you'd like. After
+Sign in to Percy and create a new App project. You can name the project "test-project" if you'd like. After
 you've created the project, you'll be shown a token environment variable.
 
 ### Step 3
