@@ -27,7 +27,7 @@ clean:
 	rm -rf $$(cat .gitignore)
 
 test-android: install
-	$(NPM)/percy exec -- $(VENV)/python tests/android.py
+	$(NPM)/percy app:exec -- $(VENV)/python tests/android.py
 
 test-ios: install
-	$(NPM)/percy exec -- $(VENV)/python tests/ios.py
+	$(NPM)/percy app:exec -- $(VENV)/python tests/ios.py

@@ -70,6 +70,8 @@ $ set PERCY_TOKEN="<your token here>"
 $ $Env:PERCY_TOKEN="<your token here>"
 ```
 
+Update `USER_NAME`, `ACCESS_KEY` and `<APP URL>` with Browserstack User name, Access key and App URL
+
 Note: Usually this would only be set up in your CI environment, but to keep things simple we'll
 configure it in your shell so that Percy is enabled in your local environment.
 
@@ -95,12 +97,17 @@ yet. You'll see that Percy shows you that these screenshots come from your `tuto
 
 ### Step 5
 
-Use your text editor to edit `tests/android.py` & `tests/ios.py` to
-- Update `USER_NAME`, `ACCESS_KEY` and `<APP URL>` with Browserstack User name, Access key and App URL
-- introduce some visual changes.
- - `tests/android.py`: You can add an extra scroll before taking screenshots like:
-   - `driver.executeScript("mobile: scrollGesture", params);`
- - `tests/ios.py`: You can update the key being sent to the textInput element.
+Depending on if you ran Android or iOS tests, please find one of the following lines in code and update it to change content on screen
+
+For android.py
+```
+search_input.send_keys("BrowserStack")  // Say change this to "App Percy"
+```
+
+For ios.py
+```
+text_input.send_keys("hello@browserstack.com" + "\n") // Say change this to "email@browserstack.com"
+```
 
 
 ### Step 6
@@ -108,7 +115,7 @@ Use your text editor to edit `tests/android.py` & `tests/ios.py` to
 Commit the change:
 
 ``` shell
-$ git commit -am "<Some relevant message>"
+$ git commit -am "Text Changed"
 ```
 
 ### Step 7
