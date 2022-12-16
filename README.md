@@ -1,5 +1,5 @@
 # example-percy-appium-python
-Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/docs/python-appium-testing-tutorial) demonstrating Percy's Python Appium integration.
+Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/v2-app/docs/appium-for-python) demonstrating Percy's Python Appium integration.
 
 ## Python Appium Tutorial
 
