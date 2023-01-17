@@ -32,7 +32,7 @@ if __name__ == '__main__':
         "deviceName": "iPhone 14",
         "os_version": "16",
         "app":  '<APP URL>',
-        "percy:options": {
+        "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
             "enabled": True
         },

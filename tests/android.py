@@ -34,7 +34,7 @@ if __name__ == '__main__':
     pixel_4 = {
         "deviceName": "Google Pixel 4",
         "app": '<APP URL>',
-        "percy:options": {
+        "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
             "enabled": True
         },
