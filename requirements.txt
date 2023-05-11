@@ -1,3 +1,4 @@
 Appium-Python-Client
 percy-appium-app
 requests==2.*
+urllib3>=1.26.15,<2
