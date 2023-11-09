@@ -2,6 +2,7 @@ import time
 
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
+from appium.options.ios import XCUITestOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from percy import percy_screenshot
@@ -11,8 +12,8 @@ ACCESS_KEY = "App Automate Access key"
 
 
 def run_session(capability):
-    driver = webdriver.Remote("https://hub-cloud.browserstack.com/wd/hub",
-                              capability)
+    options = XCUITestOptions().load_capabilities(capability)
+    driver = webdriver.Remote("https://hub-cloud.browserstack.com/wd/hub", options=options)
     text_button = WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Text Button"))
     )

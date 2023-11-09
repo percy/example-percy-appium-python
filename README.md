@@ -1,6 +1,8 @@
 # example-percy-appium-python
 Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/v2-app/docs/appium-for-python) demonstrating Percy's Python Appium integration.
 
+Note: This tutorial works with Appium-Python-Client >= 2.10.2 
+
 ## Python Appium Tutorial
 
 The tutorial assumes you're already familiar with Python and

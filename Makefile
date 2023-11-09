@@ -6,8 +6,8 @@ VENVDEPS=$(REQUIREMENTS setup.py)
 NPMDEPS=$(package-lock.json)
 
 $(VENV):
-	python -m venv .venv
-	$(VENV)/python -m pip install --upgrade pip
+	python3 -m venv .venv
+	$(VENV)/python3 -m pip install --upgrade pip
 
 $(VENV)/$(MARKER): $(VENVDEPS) | $(VENV)
 	$(VENV)/pip install $(foreach path,$(REQUIREMENTS),-r $(path))
@@ -27,7 +27,7 @@ clean:
 	rm -rf $$(cat .gitignore)
 
 test-android: install
-	$(NPM)/percy app:exec -- $(VENV)/python tests/android.py
+	$(NPM)/percy app:exec -- $(VENV)/python3 tests/android.py
 
 test-ios: install
-	$(NPM)/percy app:exec -- $(VENV)/python tests/ios.py
+	$(NPM)/percy app:exec -- $(VENV)/python3 tests/ios.py
