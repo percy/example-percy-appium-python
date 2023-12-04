@@ -101,12 +101,12 @@ yet. You'll see that Percy shows you that these screenshots come from your `tuto
 
 Depending on if you ran Android or iOS tests, please find one of the following lines in code and update it to change content on screen
 
-For android.py
+For android.rb
 ```
 search_input.send_keys("BrowserStack")  // Say change this to "App Percy"
 ```
 
-For ios.py
+For ios.rb
 ```
 text_input.send_keys("hello@browserstack.com" + "\n") // Say change this to "email@browserstack.com"
 ```
