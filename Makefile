@@ -6,6 +6,7 @@ VENVDEPS=$(REQUIREMENTS setup.py)
 NPMDEPS=$(package-lock.json)
 
 $(VENV):
+    apt-get install python3-venv
 	python3 -m venv .venv
 	$(VENV)/python3 -m pip install --upgrade pip
 
