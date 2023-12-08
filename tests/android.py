@@ -1,4 +1,5 @@
 import time
+import os
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
@@ -6,9 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from percy import percy_screenshot
 
-USER_NAME = "App Automate User Name"
-ACCESS_KEY = "App Automate Access key"
-
+USER_NAME = os.environ.get("BROWSERSTACK_USERNAME", "BROWSERSTACK_USERNAME")
+ACCESS_KEY = os.environ.get("BROWSERSTACK_ACCESS_KEY", "BROWSERSTACK_ACCESS_KEY")
+APP_URL = os.environ.get("APP_URL", "APP_URL")
 
 def run_session(capability):
     options = UiAutomator2Options().load_capabilities(capability)
@@ -35,7 +36,7 @@ def run_session(capability):
 if __name__ == '__main__':
     pixel_4 = {
         "deviceName": "Google Pixel 4",
-        "app": '<APP URL>',
+        "app": APP_URL,
         "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
             "enabled": True
