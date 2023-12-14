@@ -31,3 +31,9 @@ test-android: install
 
 test-ios: install
 	$(NPM)/percy app:exec -- $(VENV)/python3 tests/ios.py
+
+after-test-android: install
+	$(NPM)/percy app:exec -- $(VENV)/python3 after_tests/android.py
+
+after-test-ios: install
+	$(NPM)/percy app:exec -- $(VENV)/python3 after_tests/ios.py
