@@ -35,7 +35,7 @@ def run_session(capability):
 
 if __name__ == '__main__':
     pixel_4 = {
-        "deviceName": "Google Pixel 4",
+        "deviceName": "Samsung Galaxy S21",
         "app": APP_URL,
         "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
@@ -51,6 +51,7 @@ if __name__ == '__main__':
             "accessKey" : ACCESS_KEY
         },
         "platformName": "android",
+        "platformVersion" : "11.0"
     }
 
     capabilities_list = [pixel_4]

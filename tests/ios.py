@@ -30,8 +30,8 @@ def run_session(capability):
 
 if __name__ == '__main__':
     ios_capability = {
-        "deviceName": "iPhone 14",
-        "os_version": "16",
+        "deviceName": "iPhone 12",
+        "os_version": "14",
         "app":  APP_URL,
         "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
