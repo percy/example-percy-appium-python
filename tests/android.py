@@ -14,7 +14,7 @@ APP_URL = os.environ.get("APP_URL", "APP_URL")
 def run_session(capability):
     options = UiAutomator2Options().load_capabilities(capability)
     driver = webdriver.Remote('https://hub-cloud.browserstack.com/wd/hub', options=options)
-    percy_screenshot(driver, 'screenshot 1')
+    percy_screenshot(driver, 'screenshot 1', full_page=True)
 
     search_element = WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia"))
@@ -54,5 +54,25 @@ if __name__ == '__main__':
         "platformVersion" : "14.0"
     }
 
-    capabilities_list = [pixel_4]
+    pixel_9_pro = {
+        "deviceName": "Google Pixel 9 Pro XL",
+        "app": APP_URL,
+        "appium:percyOptions": {
+            # enabled is default True. This can be used to disable visual testing for certain capabilities
+            "enabled": True
+        },
+        'bstack:options' : {
+            "projectName" : "My Project",
+            "buildName" : "test percy_screnshot",
+            "sessionName" : "BStack first_test",
+
+            # Set your access credentials
+            "userName" : USER_NAME,
+            "accessKey" : ACCESS_KEY
+        },
+        "platformName": "android",
+        "platformVersion" : "14.0"
+    }
+
+    capabilities_list = [pixel_4, pixel_9_pro]
     print(list(map(run_session, capabilities_list)))
