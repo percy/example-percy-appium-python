@@ -1,4 +1,4 @@
 Appium-Python-Client==4.2.1
-percy-appium-app
+percy-appium-app==2.0.8-beta.0
 requests==2.*
 urllib3>=1.26.15,<2
