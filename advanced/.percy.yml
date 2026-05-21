@@ -1,0 +1,7 @@
+# PER-8195 — global config for the percy-appium-app (Python) advanced example.
+# Per-screenshot kwargs in tests/test_advanced.py override these.
+
+version: 2
+
+percy:
+  defer_uploads: false
