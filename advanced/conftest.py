@@ -15,8 +15,8 @@ def driver():
         "bstack:options": {
             "userName": os.environ["AA_USERNAME"],
             "accessKey": os.environ["AA_ACCESS_KEY"],
-            "projectName": os.environ.get("PERCY_PROJECT", "Percy Appium Python Advanced"),
-            "buildName": os.environ.get("PERCY_BUILD", "Advanced Python Appium"),
+            "projectName": os.environ.get("BROWSERSTACK_PROJECT_NAME", "Percy Appium Python Advanced"),
+            "buildName": os.environ.get("BROWSERSTACK_BUILD_NAME", "Advanced Python Appium"),
         },
         "appium:percyOptions": {"enabled": True, "ignoreErrors": True},
     }
