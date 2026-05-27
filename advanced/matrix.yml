@@ -47,7 +47,7 @@ rows:
 
   - id: build_metadata_via_env
     state: covered
-    test: 'conftest.py driver fixture reads PERCY_PROJECT / PERCY_BUILD / DEVICE / APP env'
+    test: 'conftest.py driver fixture reads BROWSERSTACK_PROJECT_NAME / BROWSERSTACK_BUILD_NAME / DEVICE / APP env'
   - id: env_percy_branch
     state: covered
     test: 'CI advanced job sets PERCY_BRANCH via env'

@@ -74,7 +74,11 @@ def test_exercises_consider_regions_xpaths(driver):
 
 
 def test_exercises_sync_mode(driver):
-    percy_screenshot(driver, "Wikipedia Home — sync", sync=True)
+    # sync=True blocks until Percy returns the comparison result for this
+    # screenshot, so percy_screenshot hands back that result instead of None.
+    result = percy_screenshot(driver, "Wikipedia Home — sync", sync=True)
+    print(f"sync screenshot comparison result: {result}")
+    assert result is not None
 
 
 def test_exercises_test_case_and_labels(driver):
