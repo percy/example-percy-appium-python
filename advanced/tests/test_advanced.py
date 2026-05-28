@@ -7,11 +7,27 @@ Run against the BrowserStack App Automate hub. Requires AA_USERNAME,
 AA_ACCESS_KEY, APP env vars. See ../README.md.
 """
 
+import os
 import time
+
+import pytest
 from appium.webdriver.common.appiumby import AppiumBy
 from percy import percy_screenshot
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
+
+PLATFORM = os.environ.get("PLATFORM", "android").lower()
+IS_IOS = PLATFORM == "ios"
+
+# Robust on-screen selectors per platform. The Wikipedia toolbar logo
+# (ImageView with content-desc="Wikipedia") is present on the home screen
+# across recent Wikipedia app builds, unlike the search bar's TextView
+# text which only exists in some locales/skins. For iOS we target the
+# BStackSampleApp "Text" button which the sample app exposes by name.
+ANDROID_REGION_XPATH = '//android.widget.ImageView[@content-desc="Wikipedia"]'
+IOS_REGION_XPATH = '//XCUIElementTypeButton[@name="Text"]'
+REGION_XPATH = IOS_REGION_XPATH if IS_IOS else ANDROID_REGION_XPATH
 
 
 def test_exercises_baseline_screenshot(driver):
@@ -20,19 +36,27 @@ def test_exercises_baseline_screenshot(driver):
 
 
 def test_exercises_device_name_and_orientation(driver):
-    percy_screenshot(
-        driver,
-        "Wikipedia Home — landscape",
-        device_name="Google Pixel 6",
-        orientation="landscape",
-    )
+    # Actually rotate the device — passing orientation="landscape" alone
+    # is just metadata; without driver.orientation= the snapshot would
+    # be identical to the portrait baseline.
+    driver.orientation = "LANDSCAPE"
+    try:
+        percy_screenshot(
+            driver,
+            "Wikipedia Home — landscape",
+            device_name=os.environ.get("DEVICE", "Google Pixel 6"),
+            orientation="landscape",
+        )
+    finally:
+        driver.orientation = "PORTRAIT"
 
 
 def test_exercises_fullscreen_and_bars(driver):
+    # SDK key is `full_screen` (underscore); `fullscreen` is silently dropped.
     percy_screenshot(
         driver,
         "Wikipedia Home — fullscreen",
-        fullscreen=True,
+        full_screen=True,
         status_bar_height=24,
         nav_bar_height=0,
     )
@@ -42,11 +66,13 @@ def test_exercises_ignore_regions_xpaths(driver):
     percy_screenshot(
         driver,
         "Wikipedia Home — ignore via xpath",
-        ignore_regions_xpaths=['//android.widget.TextView[@text="Search Wikipedia"]'],
+        ignore_regions_xpaths=[REGION_XPATH],
     )
 
 
 def test_exercises_ignore_region_appium_elements(driver):
+    if IS_IOS:
+        pytest.skip("Accessibility id 'Search Wikipedia' is Android Wikipedia-specific")
     el = WebDriverWait(driver, 30).until(
         EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Search Wikipedia"))
     )
@@ -69,7 +95,7 @@ def test_exercises_consider_regions_xpaths(driver):
     percy_screenshot(
         driver,
         "Wikipedia Home — consider via xpath",
-        consider_regions_xpaths=['//android.widget.TextView[@text="Search Wikipedia"]'],
+        consider_regions_xpaths=[REGION_XPATH],
     )
 
 
