@@ -19,8 +19,13 @@ def driver():
     if platform == "ios":
         caps = {
             "platformName": "iOS",
-            "deviceName": os.environ.get("DEVICE", "iPhone 13"),
-            "platformVersion": os.environ.get("OS_VERSION", "15"),
+            # iPhone 12 (OS 17) is present in percy-appium-app's device config,
+            # so Percy can resolve the status-bar/scale-factor metadata it
+            # needs for full_screen and custom_ignore_regions. An unrecognised
+            # device (e.g. "iPhone 13") logs "does not exist in config" and
+            # yields a zero screen size, which breaks custom-region math.
+            "deviceName": os.environ.get("DEVICE", "iPhone 12"),
+            "platformVersion": os.environ.get("OS_VERSION", "17"),
             "app": os.environ["APP"],
             "bstack:options": {
                 "userName": os.environ["AA_USERNAME"],
