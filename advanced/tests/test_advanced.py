@@ -96,6 +96,25 @@ def test_exercises_fullscreen_and_bars(driver):
     )
 
 
+def test_exercises_fullpage_with_bottom_scroll_offset(driver):
+    # Full-page (scroll-and-stitch) capture — App Automate only. The device's
+    # bottom navigation/system bar is sticky, so the scroll engine sees it as
+    # the end of the page and captures a single tile (no scroll). Telling Percy
+    # to ignore the bottom `bottom_scrollview_offset` pixels lets the scroll
+    # advance past the fixed bar and stitch the real content into many tiles.
+    # Verified on Pixel 6: without the offset = 1 tile, with offset = ~7 tiles.
+    # The default matches the Pixel 6 nav-bar height (160 device px); override
+    # via BOTTOM_SCROLLVIEW_OFFSET for other devices. iOS uses the same option.
+    bottom_offset = int(os.environ.get("BOTTOM_SCROLLVIEW_OFFSET", "160"))
+    percy_screenshot(
+        driver,
+        "Wikipedia Home — fullpage",
+        fullpage=True,
+        screen_lengths=4,
+        bottom_scrollview_offset=bottom_offset,
+    )
+
+
 def test_exercises_ignore_regions_xpaths(driver):
     percy_screenshot(
         driver,

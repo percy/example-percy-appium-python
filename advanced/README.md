@@ -4,7 +4,7 @@ This directory exercises the full applicable Percy SDK feature surface for `perc
 
 ## What this example covers
 
-A pytest suite (`tests/test_advanced.py`) where each test exercises one row of the App Percy / Appium Native matrix (source of truth: [`matrix.yml`](./matrix.yml)): device_name override, orientation, fullscreen + status_bar/nav_bar heights, ignore regions via xpath / appium element / custom bbox, consider regions via xpath, sync mode, test_case + labels, build metadata via env.
+A pytest suite (`tests/test_advanced.py`) where each test exercises one row of the App Percy / Appium Native matrix (source of truth: [`matrix.yml`](./matrix.yml)): device_name override, orientation, fullscreen + status_bar/nav_bar heights, full-page scroll capture (`fullpage` + `screen_lengths` + `bottom_scrollview_offset` to scroll past the sticky bottom nav), ignore regions via xpath / appium element / custom bbox, consider regions via xpath, sync mode, test_case + labels, build metadata via env.
 
 Web-only options marked `N/A` in `matrix.yml` — native App Percy has no DOM.
 

@@ -23,6 +23,15 @@ rows:
   - id: nav_bar_height
     state: covered
     test: 'test_exercises_fullscreen_and_bars'
+  - id: fullpage
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
+  - id: screen_lengths
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
+  - id: bottom_scrollview_offset
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
   - id: ignore_regions_xpaths
     state: covered
     test: 'test_exercises_ignore_regions_xpaths'
