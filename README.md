@@ -1,6 +1,15 @@
 # example-percy-appium-python
 Example app used by the [Percy Python Appium tutorial](https://docs.percy.io/v2-app/docs/appium-for-python) demonstrating Percy's Python Appium integration.
 
+> **New:** This repo ships an [`advanced/`](./advanced) example covering the full applicable App Percy SDK feature surface for `percy-appium-app` (Python). See the [Percy SDK Feature Matrix](https://docs.percy.io/docs/sdk-feature-matrix) for cross-SDK coverage.
+
+## Examples
+
+| Example | What it shows | Run command |
+|---|---|---|
+| `./` (basic, at repo root) | Minimum viable: `percy_screenshot(driver, name)` calls per Android/iOS test. Start here. | `make test` |
+| [`./advanced/`](./advanced) | Full applicable App Percy SDK feature surface: orientation, ignore/consider regions, fullscreen + status/nav bar heights, sync mode, test_case + labels. pytest + percy-appium-app. See [`advanced/README.md`](./advanced/README.md). | `cd advanced && make test` |
+
 Note: This tutorial works with Appium-Python-Client >= 2.10.2 
 
 ## Python Appium Tutorial

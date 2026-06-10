@@ -1,0 +1,52 @@
+name: Advanced — App Percy
+
+# PER-8195 Phase 2 — advanced example for percy-appium-app (Python).
+# Triggers manually only (`workflow_dispatch`). App Percy CI requires a real
+# device session; we don't run it on every PR because forks and Dependabot
+# don't have access to the hub secrets.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  advanced:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: advanced
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Sanity-check required secrets
+        env:
+          AA_USERNAME: ${{ secrets.AA_USERNAME }}
+          AA_ACCESS_KEY: ${{ secrets.AA_ACCESS_KEY }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        run: |
+          missing=()
+          [ -z "$AA_USERNAME" ]     && missing+=(AA_USERNAME)
+          [ -z "$AA_ACCESS_KEY" ]   && missing+=(AA_ACCESS_KEY)
+          [ -z "$PERCY_TOKEN" ]     && missing+=(PERCY_TOKEN)
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error::Missing required repo secrets: ${missing[*]}"
+            exit 1
+          fi
+      - name: Install advanced/ dependencies
+        run: make install
+      - name: Run pytest advanced against BrowserStack
+        env:
+          AA_USERNAME: ${{ secrets.AA_USERNAME }}
+          AA_ACCESS_KEY: ${{ secrets.AA_ACCESS_KEY }}
+          APP: ${{ secrets.APP_BS_URL }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_BRANCH: ${{ github.ref_name }}
+          PERCY_COMMIT: ${{ github.sha }}
+        run: make test

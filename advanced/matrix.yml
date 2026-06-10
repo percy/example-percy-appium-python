@@ -1,0 +1,103 @@
+# PER-8195 Phase 2 — Appium-Python matrix-row mapping.
+# Test code: tests/test_advanced.py (pytest).
+
+sdk: appium-python
+package: percy-appium-app
+language: python
+sdk_min_version: '2.0.0'
+cli_min_version: '1.31.13'
+
+rows:
+  - id: device_name_override
+    state: covered
+    test: 'test_exercises_device_name_and_orientation'
+  - id: orientation_handling
+    state: covered
+    test: 'test_exercises_device_name_and_orientation'
+  - id: fullscreen
+    state: covered
+    test: 'test_exercises_fullscreen_and_bars'
+  - id: status_bar_height
+    state: covered
+    test: 'test_exercises_fullscreen_and_bars'
+  - id: nav_bar_height
+    state: covered
+    test: 'test_exercises_fullscreen_and_bars'
+  - id: fullpage
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
+  - id: screen_lengths
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
+  - id: bottom_scrollview_offset
+    state: covered
+    test: 'test_exercises_fullpage_with_bottom_scroll_offset'
+  - id: ignore_regions_xpaths
+    state: covered
+    test: 'test_exercises_ignore_regions_xpaths'
+  - id: ignore_region_appium_elements
+    state: covered
+    test: 'test_exercises_ignore_region_appium_elements'
+  - id: custom_ignore_regions
+    state: covered
+    test: 'test_exercises_custom_ignore_regions'
+  - id: consider_regions_xpaths
+    state: covered
+    test: 'test_exercises_consider_regions_xpaths'
+  - id: sync
+    state: covered
+    test: 'test_exercises_sync_mode'
+  - id: test_case
+    state: covered
+    test: 'test_exercises_test_case_and_labels'
+  - id: labels
+    state: covered
+    test: 'test_exercises_test_case_and_labels'
+
+  - id: build_metadata_via_env
+    state: covered
+    test: 'conftest.py driver fixture reads BROWSERSTACK_PROJECT_NAME / BROWSERSTACK_BUILD_NAME / DEVICE / APP env'
+  - id: env_percy_branch
+    state: covered
+    test: 'CI advanced job sets PERCY_BRANCH via env'
+  - id: env_percy_commit
+    state: covered
+    test: 'CI advanced job sets PERCY_COMMIT via env'
+
+  # Web-only.
+  - id: widths
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: percy_css
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: min_height
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: enable_javascript
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: scope
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: discovery
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: dom_transformation
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: responsive_snapshot_capture
+    state: n_a
+    reason: 'No DOM in native App Percy.'
+  - id: readiness_preset
+    state: n_a
+  - id: device_pixel_ratio
+    state: n_a
+  - id: browsers
+    state: n_a
+
+  - id: percy_yml_global_config
+    state: covered
+  - id: environment_info_reporting
+    state: covered
+    test: 'automatic via percy-appium-app client info'
