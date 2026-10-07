@@ -42,6 +42,7 @@ if __name__ == '__main__':
             "enabled": True
         },
         'bstack:options' : {
+            "appiumVersion": os.environ.get("APPIUM_VERSION", "2.19.0"),
             "projectName" : "My Project",
             "buildName" : "test percy_screnshot",
             "sessionName" : "BStack first_test",
