@@ -31,13 +31,14 @@ def run_session(capability):
 if __name__ == '__main__':
     ios_capability = {
         "deviceName": "iPhone 12",
-        "os_version": "14",
+        "os_version": "17",
         "app":  APP_URL,
         "appium:percyOptions": {
             # enabled is default True. This can be used to disable visual testing for certain capabilities
             "enabled": True
         },
         'bstack:options' : {
+            "appiumVersion": os.environ.get("APPIUM_VERSION", "2.19.0"),
             "projectName" : "My Project",
             "buildName" : "test percy_screnshot",
             "sessionName" : "BStack first_test",
